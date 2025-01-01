@@ -1,19 +1,54 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:socialmediaemsi/components/my_button.dart';
 import 'package:socialmediaemsi/components/my_textfield.dart';
+import 'package:socialmediaemsi/helper/helper_fuctions.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
   final void Function()? onTap;
 
-  RegisterPage({super.key, required this.onTap});
+  const RegisterPage({super.key, required this.onTap});
 
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController usernameController = TextEditingController();
+
   final TextEditingController emailController = TextEditingController();
+
   final TextEditingController passwordController = TextEditingController();
+
   final TextEditingController confirmpasswordController =
       TextEditingController();
 
-  void register() {}
+  void registerUser() async {
+    showDialog(
+        context: context,
+        builder: (context) => Center(
+              child: CircularProgressIndicator(),
+            ));
+
+    if (passwordController.text != confirmpasswordController.text) {
+      Navigator.pop(context);
+
+      displayMessageToUser("Passwords do not match", context);
+      //try catch
+    } else {
+      try {
+        UserCredential? userCredential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController.text,
+          password: passwordController.text,
+        );
+        Navigator.pop(context);
+      } on FirebaseAuthException catch (e) {
+        Navigator.pop(context);
+        displayMessageToUser(e.code, context);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +104,7 @@ class RegisterPage extends StatelessWidget {
             const SizedBox(height: 25),
             MyButton(
               text: "Register",
-              onTap: register,
+              onTap: registerUser,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -78,7 +113,7 @@ class RegisterPage extends StatelessWidget {
                     style: TextStyle(
                         color: Theme.of(context).colorScheme.inversePrimary)),
                 GestureDetector(
-                  onTap: onTap,
+                  onTap: widget.onTap,
                   child: Text(
                     "Login here",
                     style: TextStyle(fontWeight: FontWeight.bold),

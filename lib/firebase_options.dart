@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAns17SRg2ly1yeXfDMsxWljDZPUstH8wE',
-    appId: '1:789185738147:android:b442ddff16cd54095dd616',
+    appId: '1:789185738147:android:ef96473ab1ac521f5dd616',
     messagingSenderId: '789185738147',
     projectId: 'socialmediaflutter-4ebe0',
     storageBucket: 'socialmediaflutter-4ebe0.firebasestorage.app',
@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'socialmediaflutter-4ebe0.firebasestorage.app',
     iosBundleId: 'com.example.socialmediaemsi',
   );
+
 }
