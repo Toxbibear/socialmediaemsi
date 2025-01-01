@@ -3,10 +3,12 @@ import 'package:socialmediaemsi/components/my_button.dart';
 import 'package:socialmediaemsi/components/my_textfield.dart';
 
 class LoginPage extends StatelessWidget {
+  final void Function()? onTap;
+
+  LoginPage({super.key, required this.onTap});
+
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
-  LoginPage({super.key});
 
   void login() {}
 
@@ -61,9 +63,9 @@ class LoginPage extends StatelessWidget {
                     style: TextStyle(
                         color: Theme.of(context).colorScheme.inversePrimary)),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: onTap,
                   child: Text(
-                    "Register",
+                    "Register here",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),

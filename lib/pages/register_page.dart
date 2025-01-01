@@ -3,13 +3,15 @@ import 'package:socialmediaemsi/components/my_button.dart';
 import 'package:socialmediaemsi/components/my_textfield.dart';
 
 class RegisterPage extends StatelessWidget {
+  final void Function()? onTap;
+
+  RegisterPage({super.key, required this.onTap});
+
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmpasswordController =
       TextEditingController();
-
-  RegisterPage({super.key});
 
   void register() {}
 
@@ -35,7 +37,7 @@ class RegisterPage extends StatelessWidget {
             MyTextfield(
               hintText: "Username",
               obscureText: false,
-              controller: emailController,
+              controller: usernameController,
             ),
             const SizedBox(height: 10),
             MyTextfield(
@@ -51,9 +53,9 @@ class RegisterPage extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             MyTextfield(
-              hintText: "Password",
+              hintText: "Verify Password",
               obscureText: true,
-              controller: passwordController,
+              controller: confirmpasswordController,
             ),
             const SizedBox(height: 10),
             Row(
@@ -66,19 +68,19 @@ class RegisterPage extends StatelessWidget {
             ),
             const SizedBox(height: 25),
             MyButton(
-              text: "Login",
+              text: "Register",
               onTap: register,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text("don't have an account?",
+                Text("Already have an account?",
                     style: TextStyle(
                         color: Theme.of(context).colorScheme.inversePrimary)),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: onTap,
                   child: Text(
-                    "Register",
+                    "Login here",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
