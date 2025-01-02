@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:socialmediaemsi/components/my_drawer.dart';
 import 'package:socialmediaemsi/components/my_list_tile.dart';
@@ -100,7 +100,7 @@ class HomePage extends StatelessWidget {
                       //get data from each post
                       String message = post['PostMessage'];
                       String userEmail = post['UserEmail'];
-                      Timestamp timestamp = post['PostTimeStamp'];
+                      // Timestamp timestamp = post['PostTimeStamp'];
 
                       return MyListTile(title: message, subTitle: userEmail);
                     },
