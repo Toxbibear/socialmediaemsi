@@ -13,7 +13,8 @@ class MyListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 10.0, right: 10, bottom: 10),
+      padding:
+          const EdgeInsets.only(top: 20.0, left: 10.0, right: 10, bottom: 10),
       child: Container(
         decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.primary,

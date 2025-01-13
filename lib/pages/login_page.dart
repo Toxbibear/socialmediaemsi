@@ -55,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
               color: Theme.of(context).colorScheme.inversePrimary,
             ),
             const SizedBox(height: 25),
-            Text("M I N I M A L",
+            Text("IJ",
                 style: TextStyle(
                   fontSize: 20,
                 )),
